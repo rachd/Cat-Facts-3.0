@@ -27,6 +27,11 @@
     UIColor *randomColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
     self.backgroundColor = randomColor;
 }
+
+- (void)buttonClicked {
+    [self changeBackgroundColor];
+}
+
 - (void)setUpLabelAndButton {
     self.factLabel = [[UILabel alloc] init];
     self.factLabel.text = @"Placeholder";
@@ -38,10 +43,13 @@
     self.factLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [self addSubview:self.factLabel];
     
-    UIButton *factButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *factButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [factButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    factButton.backgroundColor = [UIColor whiteColor];
+    factButton.layer.cornerRadius = 6.0;
     [factButton setTitle:@"Change Fact" forState:UIControlStateNormal];
     factButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [factButton addTarget:self action:@selector(changeBackgroundColor) forControlEvents:UIControlEventTouchUpInside];
+    [factButton addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:factButton];
     
     NSDictionary *viewsDictionary = @{@"factLabel": self.factLabel, @"factButton": factButton};
