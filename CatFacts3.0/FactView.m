@@ -20,9 +20,13 @@
 }
 
 - (void)changeBackgroundColor {
-    self.backgroundColor = [UIColor whiteColor];
+    float red = (arc4random() % 100) / 100.0;
+    float green = (arc4random() % 100) / 100.0;
+    float blue = (arc4random() % 100) / 100.0;
+    
+    UIColor *randomColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    self.backgroundColor = randomColor;
 }
-
 - (void)setUpLabelAndButton {
     self.factLabel = [[UILabel alloc] init];
     self.factLabel.text = @"Placeholder";
@@ -37,6 +41,7 @@
     UIButton *factButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [factButton setTitle:@"Change Fact" forState:UIControlStateNormal];
     factButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [factButton addTarget:self action:@selector(changeBackgroundColor) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:factButton];
     
     NSDictionary *viewsDictionary = @{@"factLabel": self.factLabel, @"factButton": factButton};
