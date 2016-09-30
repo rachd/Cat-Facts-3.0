@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  FactsViewController.h
 //  CatFacts3.0
 //
 //  Created by Rachel Dorn on 9/29/16.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface FactsViewController : UIViewController
 
-@property (strong, nonatomic) UIWindow *window;
 
 @end
 

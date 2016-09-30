@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "FactsViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor colorWithRed:1.0 green:0.8 blue:0.4 alpha:1.0];
+    
+    FactsViewController *factsVC = [[FactsViewController alloc] init];
+    
+    self.window.rootViewController = factsVC;
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

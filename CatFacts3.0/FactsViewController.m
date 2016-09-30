@@ -1,22 +1,33 @@
 //
-//  ViewController.m
+//  FactsViewController.m
 //  CatFacts3.0
 //
 //  Created by Rachel Dorn on 9/29/16.
 //  Copyright © 2016 RachelDorn. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "FactsViewController.h"
+#import "FactView.h"
 
-@interface ViewController ()
+@interface FactsViewController ()
+
+@property (nonatomic, strong) FactView *factView;
 
 @end
 
-@implementation ViewController
+@implementation FactsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.factView = [[FactView alloc] init];
+    self.view = self.factView;
+    
+    //[self retrieveAllFacts];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self retrieveAllFacts];
 }
 
 
@@ -26,10 +37,10 @@
 }
 
 - (void)changeFact:(NSString *)fact {
-    
+    self.factView.factLabel.text = fact;
 }
 
-- (void)retrieveAllFacts:(NSMutableArray *)factsArray {
+- (void)retrieveAllFacts {
     [self fetchFacts:^(NSArray *response) {
         [self changeFact:response[0]];
     } failure:^(NSError *error) {

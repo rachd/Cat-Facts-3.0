@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FactView.h
 //  CatFacts3.0
 //
 //  Created by Rachel Dorn on 9/29/16.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface FactView : UIView
 
+@property (nonatomic, strong) UILabel *factLabel;
 
 @end
-
