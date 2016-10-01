@@ -37,11 +37,11 @@
     self.factLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width - 40, self.frame.size.height - 100)];
     self.factLabel.text = @"";
     self.factLabel.font = [UIFont systemFontOfSize:30];
-    self.factLabel.textColor = [UIColor blackColor];
+    self.factLabel.textColor = [UIColor whiteColor];
     self.factLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.factLabel.textAlignment = NSTextAlignmentCenter;
-    self.factLabel.numberOfLines = 0;
-    self.factLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.factLabel.numberOfLines = 30;
+    self.factLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self.factLabel.adjustsFontSizeToFitWidth = YES;
     [self addSubview:self.factLabel];
     
