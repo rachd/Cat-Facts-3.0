@@ -9,7 +9,7 @@
 #import "FactsViewController.h"
 #import "FactView.h"
 
-@interface FactsViewController ()
+@interface FactsViewController () <FactViewDelegate>
 
 @property (nonatomic, strong) FactView *factView;
 
@@ -20,14 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.factView = [[FactView alloc] init];
+    self.factView = [[FactView alloc] initWithFrame:self.view.frame];
+    self.factView.delegate = self;
     self.view = self.factView;
     
     //[self retrieveAllFacts];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self retrieveAllFacts];
+    [self retrieveFact];
 }
 
 
@@ -40,7 +41,7 @@
     self.factView.factLabel.text = fact;
 }
 
-- (void)retrieveAllFacts {
+- (void)retrieveFact {
     [self fetchFacts:^(NSArray *response) {
         [self changeFact:response[0]];
     } failure:^(NSError *error) {
@@ -73,5 +74,12 @@
         
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+#pragma mark FaceViewDelegate methods
+
+- (void)buttonClicked {
+    [self retrieveFact];
+}
+
 
 @end

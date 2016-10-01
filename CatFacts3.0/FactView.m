@@ -10,8 +10,8 @@
 
 @implementation FactView
 
-- (instancetype)init {
-    self = [super init];
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
         [self changeBackgroundColor];
         [self setUpLabelAndButton];
@@ -30,20 +30,23 @@
 
 - (void)buttonClicked {
     [self changeBackgroundColor];
+    [self.delegate buttonClicked];
 }
 
 - (void)setUpLabelAndButton {
-    self.factLabel = [[UILabel alloc] init];
-    self.factLabel.text = @"Placeholder";
+    self.factLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, self.frame.size.width - 40, self.frame.size.height - 100)];
+    self.factLabel.text = @"";
     self.factLabel.font = [UIFont systemFontOfSize:30];
     self.factLabel.textColor = [UIColor blackColor];
     self.factLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.factLabel.textAlignment = NSTextAlignmentCenter;
     self.factLabel.numberOfLines = 0;
     self.factLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.factLabel.adjustsFontSizeToFitWidth = YES;
     [self addSubview:self.factLabel];
     
     UIButton *factButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    factButton.frame = CGRectMake(20, self.frame.size.height - 60, self.frame.size.width - 40, 40);
     [factButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     factButton.backgroundColor = [UIColor whiteColor];
     factButton.layer.cornerRadius = 6.0;
@@ -52,22 +55,22 @@
     [factButton addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:factButton];
     
-    NSDictionary *viewsDictionary = @{@"factLabel": self.factLabel, @"factButton": factButton};
-    NSArray *vert = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[factLabel]-20-[factButton]-20-|"
-                                                            options:0
-                                                            metrics:nil
-                                                              views:viewsDictionary];
-    NSArray *horiz = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[factLabel]-|"
-                                                             options:0
-                                                             metrics:nil
-                                                               views:viewsDictionary];
-    NSArray *horiz2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[factButton]-|"
-                                                             options:0
-                                                             metrics:nil
-                                                               views:viewsDictionary];
-    [self addConstraints:vert];
-    [self addConstraints:horiz];
-    [self addConstraints:horiz2];
+  //  NSDictionary *viewsDictionary = @{@"factLabel": self.factLabel, @"factButton": factButton};
+  //  NSArray *vert = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-20-[factLabel]-20-[factButton(==40)]-20-|"
+  //                                                          options:0
+  //                                                          metrics:nil
+  //                                                            views:viewsDictionary];
+  //  NSArray *horiz = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[factLabel]-|"
+  //                                                           options:0
+  //                                                           metrics:nil
+ //                                                              views:viewsDictionary];
+  //  NSArray *horiz2 = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[factButton]-|"
+ //                                                            options:0
+ //                                                            metrics:nil
+ //                                                              views:viewsDictionary];
+  //  [self addConstraints:vert];
+ //   [self addConstraints:horiz];
+  //  [self addConstraints:horiz2];
 
 }
 
