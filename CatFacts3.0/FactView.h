@@ -20,4 +20,6 @@
 @property (nonatomic, strong) UILabel *factLabel;
 @property (nonatomic, weak) id <FactViewDelegate> delegate;
 
+- (void)changeBackgroundColor;
+
 @end

@@ -79,6 +79,7 @@
 
 - (void)buttonClicked {
     [self retrieveFact];
+    [self.factView changeBackgroundColor];
 }
 
 
