@@ -112,8 +112,8 @@
 				TargetAttributes = {
 					CC6BBB901D9E15C200409BAB = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 5NPQDBPA7D;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 549743G9UM;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -265,11 +265,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5NPQDBPA7D;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 549743G9UM;
 				INFOPLIST_FILE = CatFacts3.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.racheldorn.CatFacts3-0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rachelthedeveloper.CatFacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "759860b6-205b-42ca-8490-615055db3664";
+				PROVISIONING_PROFILE_SPECIFIER = "KittyFacts!";
 			};
 			name = Debug;
 		};
@@ -277,11 +281,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5NPQDBPA7D;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 549743G9UM;
 				INFOPLIST_FILE = CatFacts3.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.racheldorn.CatFacts3-0";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rachelthedeveloper.CatFacts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6e577cc4-e1c5-4a7b-becc-e3fb8466eb7d";
+				PROVISIONING_PROFILE_SPECIFIER = KittyFactsProd;
 			};
 			name = Release;
 		};
@@ -304,6 +312,7 @@
 				CC6BBBAA1D9E15C200409BAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
