@@ -42,23 +42,24 @@
 }
 
 - (void)retrieveFact {
-    [self fetchFacts:^(NSArray *response) {
-        [self changeFact:response[0]];
+    [self fetchFacts:^(NSString *response) {
+        [self changeFact:response];
+        [self.factView changeBackgroundColor];
     } failure:^(NSError *error) {
         [self presentAlertWithTitle:@"Error" message:@"Could not retrieve facts. Please check your internet connection and try again"];
     }];
 }
 
-- (void)fetchFacts:(void (^)(NSArray *response))success failure:(void(^)(NSError* error))failure {
+- (void)fetchFacts:(void (^)(NSString *response))success failure:(void(^)(NSError* error))failure {
     NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://catfacts-api.appspot.com/api/facts?number=1"]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://catfact.ninja/fact"]] completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (response) {
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             dispatch_async(dispatch_get_main_queue(), ^{
-                success([json objectForKey:@"facts"]);
+                success([json objectForKey:@"fact"]);
             });
         } else {
-            NSArray *blankArray = [[NSArray alloc] initWithObjects:@"Please check your internet connection and try again", nil];
+            NSString *blankArray = @"Please check your internet connection and try again";
             success(blankArray);
         }
     }];
@@ -79,7 +80,6 @@
 
 - (void)buttonClicked {
     [self retrieveFact];
-    [self.factView changeBackgroundColor];
 }
 
 
